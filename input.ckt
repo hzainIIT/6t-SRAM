@@ -1,0 +1,70 @@
+** Generated for: hspiceD
+** Generated on: Dec  9 12:52:33 2023
+** Design library name: my529
+** Design cell name: 6tSRAM_rvt_test
+** Design view name: schematic
+
+
+.PROBE TRAN
++    V(bb)
++    V(b)
++    V(qb)
++    V(q)
++    V(d_out)
++    V(w_l)
++    V(we)
++    V(d_in)
++    V(clk)
+.TRAN 1e-12 10e-9 START=0.0
+
+.TEMP 25.0
+.OPTION
++    ARTIST=2
++    INGOLD=2
++    PARHIER=LOCAL
++    PSF=2
+.INCLUDE "/mnt/data0/ASAP7_PDKandLIB_v1p6/asap7PDK_r1p6/models/hspice/7nm_TT_160803.pm"
+
+** Library name: my529
+** Cell name: 6tSRAM
+** View name: schematic
+.subckt my529_6tSRAM_schematic b bb clk d_in d_out q qb vdd vss we w_l
+M28 net042 net042 vdd vdd pmos_rvt w=27e-9 l=20e-9 nfin=1
+M27 net012 d_in vdd vdd pmos_rvt w=27e-9 l=20e-9 nfin=1
+M25 qb q vdd vdd pmos_rvt w=27e-9 l=20e-9 nfin=1
+M24 bb clk b vdd pmos_rvt w=27e-9 l=20e-9 nfin=1
+M23 bb clk vdd vdd pmos_rvt w=27e-9 l=20e-9 nfin=1
+M20 d_out net039 vdd vdd pmos_rvt w=27e-9 l=20e-9 nfin=1
+M10 net039 net042 vdd vdd pmos_rvt w=27e-9 l=20e-9 nfin=1
+M8 b clk vdd vdd pmos_rvt w=27e-9 l=20e-9 nfin=1
+M0 q qb vdd vdd pmos_rvt w=27e-9 l=20e-9 nfin=1
+M29 net039 b vss vss nmos_rvt w=108e-9 l=20e-9 nfin=4
+M26 net038 d_in vss vss nmos_rvt w=108e-9 l=20e-9 nfin=4
+M22 qb q vss vss nmos_rvt w=432e-9 l=20e-9 nfin=12
+M21 d_out net039 vss vss nmos_rvt w=108e-9 l=20e-9 nfin=4
+M17 net012 d_in vss vss nmos_rvt w=108e-9 l=20e-9 nfin=4
+M16 net037 net012 vss vss nmos_rvt w=108e-9 l=20e-9 nfin=4
+M15 b we net037 vss nmos_rvt w=108e-9 l=20e-9 nfin=4
+M14 bb we net038 vss nmos_rvt w=108e-9 l=20e-9 nfin=4
+M12 net042 bb vss vss nmos_rvt w=108e-9 l=20e-9 nfin=4
+M6 b w_l q vss nmos_rvt w=108e-9 l=20e-9 nfin=4
+M5 qb w_l bb vss nmos_rvt w=108e-9 l=20e-9 nfin=4
+M2 q qb vss vss nmos_rvt w=432e-9 l=20e-9 nfin=12
+.ends my529_6tSRAM_schematic
+** End of subcircuit definition.
+
+** Library name: my529
+** Cell name: 6tSRAM_rvt_test
+** View name: schematic
+xi0 b bb clk d_in d_out q qb net8 0 we w_l my529_6tSRAM_schematic
+v14 clk 0 PULSE 1 0 0 10e-12 10e-12 120e-12 250e-12
+v3 we 0 PULSE 0 1 0 10e-12 10e-12 10e-9 20e-9
+v2 w_l 0 PULSE 0 1 0 10e-12 10e-12 120e-12 250e-12
+v0 d_in 0 PULSE 1.2 0 0 10e-12 10e-12 2950e-12 5900e-12
+v8 net8 0 DC=1.2
+c4 b 0 1e-15
+c3 bb 0 1e-15
+c2 qb 0 1e-15
+c1 q 0 1e-15
+c0 d_out 0 1e-15
+.END
